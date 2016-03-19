@@ -105,7 +105,8 @@ int main()
     PlaceNumber(sudoku, 3, 8, 6);
     PlaceNumber(sudoku, 5, 8, 8);
     PlaceNumber(sudoku, 8, 8, 1);
-#endif
+
+#else
 
     // output the board to start
     PrintSudoku(sudoku);
@@ -151,6 +152,7 @@ int main()
         }
 
     } while(*input_buffer != '\n');
+#endif
 
     // use finished input, solve the sudoku now
     printf("Attempting to solve...\n");
