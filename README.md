@@ -3,6 +3,7 @@ A simple ANSI-C compliant program to solve Sudoku puzzles
 
 # How to Build
 Run "make test" to build TestSudokuSolver which starts you out with a test sudoku puzzle that needs completion.
+
 Run make all to build the SudokuSolver which allows you to enter in the preset numbers of your Sudoku puzzle.
 
 # Usage
