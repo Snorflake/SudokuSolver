@@ -11,6 +11,6 @@ Simply enter in each preset number on your Sudoku puzzle separated with spaces i
 
   Example Input: 123 456 789
 
-The above will places a 3 at (1, 2), a 6 at (4, 5), and a 9 at (7, 8)
+The above will place a 3 at (1, 2), a 6 at (4, 5), and a 9 at (7, 8)
 
 Once finished entering numbers simply hit enter with a blank input and the program will attempt to solve the Sudoku.
