@@ -57,9 +57,11 @@ bool __grabxyv(char **ptr, unsigned int xyv[3])
 
 int main()
 {
+#ifndef TEST_SUDOKU
     char input_buffer[MAXBUFFERSIZE];
     char *ptr;
     unsigned int xyv[3], placed_numbers = 0;
+#endif
 
     Sudoku *sudoku = NULL;
 
