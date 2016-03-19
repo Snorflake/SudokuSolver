@@ -529,7 +529,7 @@ unsigned int SolveRows(Sudoku *sudoku)
                 if (IsCellEmpty(sudoku, x, y)) {
                     // iterate values
                     for (v = 1; v < 10; ++v) {
-                        // if we can place a number here, check every other cell in this box
+                        // if we can place a number here, check every other cell in this row
                         if (CanPlaceNumber(sudoku, x, y, v)) {
 
                             //find out if this is the only place we can place this number
@@ -537,18 +537,18 @@ unsigned int SolveRows(Sudoku *sudoku)
 
                             // iterate each cell within this row horizontally
                             for (xx = 0; (xx < 9) && onlyplace; ++xx) {
-                                // if this isn't the box we're originally trying to place a number in
+                                // if this isn't the cell we're originally trying to place a number in
                                 if (xx != x) {
-                                    // can we place a number in this box
+                                    // can we place a number in this cell
                                     if (CanPlaceNumber(sudoku, xx, y, v)) {
-                                        // we can place a number in this other box, so the original choice isn't 100%
+                                        // we can place a number in this other cell, so the original choice isn't 100%
                                         onlyplace = false;
                                     }
                                 }
                             }
                             
 
-                            // if we didn't discover any other places in this box that the number can be placed
+                            // if we didn't discover any other places in this row that the number can be placed
                             if (onlyplace) {
                                 // put our new number here
                                 PlaceNumber(sudoku, x, y, v);
@@ -594,7 +594,7 @@ unsigned int SolveColumns(Sudoku *sudoku)
 
     // iterate each column
     for (x = 0; x < 9; ++x) {
-        // make sure this row isn't completed yet
+        // make sure this column isn't completed yet
         if (!IsColumnComplete(sudoku, x)) {
             // iterate vertically
             for (y = 0; y < 9; ++y) {
@@ -602,7 +602,7 @@ unsigned int SolveColumns(Sudoku *sudoku)
                 if (IsCellEmpty(sudoku, x, y)) {
                     // iterate values
                     for (v = 1; v < 10; ++v) {
-                        // if we can place a number here, check every other cell in this box
+                        // if we can place a number here, check every other cell in this column
                         if (CanPlaceNumber(sudoku, x, y, v)) {
 
                             //find out if this is the only place we can place this number
@@ -610,18 +610,18 @@ unsigned int SolveColumns(Sudoku *sudoku)
 
                             // iterate each cell within this column vertically
                             for (yy = 0; (yy < 9) && onlyplace; ++yy) {
-                                // if this isn't the box we're originally trying to place a number in
+                                // if this isn't the cell we're originally trying to place a number in
                                 if (yy != y) {
-                                    // can we place a number in this box
+                                    // can we place a number in this cell
                                     if (CanPlaceNumber(sudoku, x, yy, v)) {
-                                        // we can place a number in this other box, so the original choice isn't 100%
+                                        // we can place a number in this other cell, so the original choice isn't 100%
                                         onlyplace = false;
                                     }
                                 }
                             }
                             
 
-                            // if we didn't discover any other places in this box that the number can be placed
+                            // if we didn't discover any other places in this column that the number can be placed
                             if (onlyplace) {
                                 // put our new number here
                                 PlaceNumber(sudoku, x, y, v);
