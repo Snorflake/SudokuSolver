@@ -107,12 +107,12 @@ int main()
     PlaceNumber(sudoku, 3, 8, 6);
     PlaceNumber(sudoku, 5, 8, 8);
     PlaceNumber(sudoku, 8, 8, 1);
-
-#else
+#endif
 
     // output the board to start
     PrintSudoku(sudoku);
 
+#ifndef TEST_SUDOKU
     do {
         // clean our input_buffer each loop
         memset(input_buffer, 0, MAXBUFFERSIZE);
