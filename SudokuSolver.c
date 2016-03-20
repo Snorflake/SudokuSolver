@@ -32,6 +32,28 @@ bool InitializeSudoku(Sudoku **sudoku)
     return true;
 }
 
+//! Function to safely cleanup a sudoku object
+/*!
+ *  @param      Sudoku*         A pointer to the sudoku object to initialize
+ *
+ *  @returns    boolean         Returns true if sudoku cleaned up successfully
+ *
+ *  @author     Daniel Fraser   <danielfraser782@gmail.com>
+ */
+bool CleanupSudoku(Sudoku *sudoku)
+{
+    // sanity
+    if (!sudoku) {
+        return false;
+    }
+    
+    // erase our object
+    free(sudoku);
+
+    return true;
+}
+
+
 //! Function to print out the sudoku table
 /*!
  *  @param    Sudoku*         A pointer to the sudoku object to print

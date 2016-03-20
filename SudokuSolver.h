@@ -21,13 +21,21 @@ typedef struct
     unsigned int grid[9][9];
 } Sudoku;
 
-//! Function to initialize a new sudoku
+//! Function to initialize a new sudoku object
 /*!
- *  @param      Sudoku*         A pointer to the sudoku object to initialize
+ *  @param      Sudoku**        A pointer to the pointer to be filled with the new sudoku
  *
  *  @returns    boolean         Returns true if successful
  */
 bool InitializeSudoku(Sudoku **);
+
+//! Function to safely cleanup a sudoku object
+/*!
+ *  @param      Sudoku*         A pointer to the sudoku object to initialize
+ *
+ *  @returns    boolean         Returns true if sudoku cleaned up successfully
+ */
+bool CleanupSudoku(Sudoku *);
 
 //! Function to print out the sudoku table
 /*!

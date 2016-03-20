@@ -66,7 +66,10 @@ int main()
     Sudoku *sudoku = NULL;
 
     // initialize a new sudoku
-    InitializeSudoku(&sudoku);
+    if (!InitializeSudoku(&sudoku)) {
+        printf("Failed to initialize sudoku object\n");
+        return 0;
+    }  
 
     printf("_____________________________________________________________________\n"
             "|                    Welcome to sudoku solver v1.0                  |\n"
@@ -165,6 +168,11 @@ int main()
         printf("Successfully solved the puzzle\n");
     } else {
         printf("Unable to solve the puzzle\n");
+    }
+    
+    // cleanup our sudoku object
+    if (!CleanupSudoku(sudoku)) {
+        printf("Error while cleaning up sudoku object\n");
     }
 
     return 0;
