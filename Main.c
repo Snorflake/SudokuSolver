@@ -1,6 +1,6 @@
 #include "SudokuSolver.h"
 
-#define MAXBUFFERSIZE 512
+#define INPUTBUFFERSIZE 1024
 
 #define ISNUMERIC(x) (x > 0x2F && x < 0x3A)
 
@@ -58,7 +58,7 @@ bool __grabxyv(char **ptr, unsigned int xyv[3])
 int main()
 {
 #ifndef TEST_SUDOKU
-    char input_buffer[MAXBUFFERSIZE];
+    char input_buffer[INPUTBUFFERSIZE];
     char *ptr;
     unsigned int xyv[3], placed_numbers = 0;
 #endif
@@ -118,10 +118,10 @@ int main()
 #ifndef TEST_SUDOKU
     do {
         // clean our input_buffer each loop
-        memset(input_buffer, 0, MAXBUFFERSIZE);
+        memset(input_buffer, 0, sizeof(input_buffer));
         
         // grab our input
-        __getinput(input_buffer, MAXBUFFERSIZE);
+        __getinput(input_buffer, sizeof(input_buffer));
         ptr = input_buffer;
 
         // start at 0 placed numbers this iteration
