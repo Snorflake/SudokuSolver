@@ -182,7 +182,7 @@ int main(int argc, char* argv[])
     
     // cleanup our sudoku object
     if (!DestroySudoku(sudoku)) {
-        printf("Error while cleaning up sudoku object\n");
+        printf("Error while destroying the sudoku object\n");
     }
 
     return 0;
