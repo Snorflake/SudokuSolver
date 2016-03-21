@@ -55,30 +55,40 @@ bool __grabxyv(char **ptr, unsigned int xyv[3])
     return true;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
 #ifndef TEST_SUDOKU
     char input_buffer[INPUTBUFFERSIZE];
     char *ptr;
     unsigned int xyv[3], placed_numbers = 0;
 #endif
+    unsigned int threshold = 100;
+    unsigned int maxguesses = 0;
 
     Sudoku *sudoku = NULL;
 
+    // check for command line arguments <program> <threshold> <guesses>
+    if (argc > 1) {
+        threshold = atoi(argv[1]);
+        if (argc > 2) {
+            maxguesses = atoi(argv[2]);
+        }
+    }
+
     // initialize a new sudoku
-    if (!InitializeSudoku(&sudoku)) {
+    if (!InitializeSudoku(&sudoku, threshold, maxguesses)) {
         printf("Failed to initialize sudoku object\n");
         return 0;
     }  
 
     printf("_____________________________________________________________________\n"
-            "|                    Welcome to sudoku solver v1.0                  |\n"
-            "|                                                                   |\n"
-            "| Start by entering the numbers in the form xyv                     |\n"
-            "| Example: 119 will put a 9 in the top left (x:1, y:1) value: 9     |\n"
-            "| You can enter more than one number by separating them with spaces |\n"
-            "| Leave the input blank to signal you are finished entering numbers |\n"
-            "|___________________________________________________________________|\n");
+           "|                    Welcome to sudoku solver v1.0                  |\n"
+           "|                                                                   |\n"
+           "| Start by entering the numbers in the form xyv                     |\n"
+           "| Example: 119 will put a 9 in the top left (x:1, y:1) value: 9     |\n"
+           "| You can enter more than one number by separating them with spaces |\n"
+           "| Leave the input blank to signal you are finished entering numbers |\n"
+           "|___________________________________________________________________|\n");
 
     // a test sudoku board
 #ifdef TEST_SUDOKU
@@ -171,7 +181,7 @@ int main()
     }
     
     // cleanup our sudoku object
-    if (!CleanupSudoku(sudoku)) {
+    if (!DestroySudoku(sudoku)) {
         printf("Error while cleaning up sudoku object\n");
     }
 
